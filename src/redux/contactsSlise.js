@@ -22,6 +22,10 @@ const contactsSlice = createSlice({
   reducers: {
     addContact: {
       reducer(state, action) {
+        if (state.find(contact => contact.name === action.payload.name)) {
+          alert(`${action.payload.name} is already in contacts`);
+          return;
+        }
         const updatedContacts = [...state, action.payload];
         localStorage.setItem('contacts', JSON.stringify(updatedContacts));
         return updatedContacts;
@@ -36,12 +40,10 @@ const contactsSlice = createSlice({
         };
       },
     },
-    deleteContact: {
-      reducer(state, action) {
-        const updatedContacts = state.filter(contact => contact.id !== action.payload);
-        localStorage.setItem('contacts', JSON.stringify(updatedContacts));
-        return updatedContacts;
-      },
+    deleteContact(state, action) {
+      const updatedContacts = state.filter(contact => contact.id !== action.payload);
+      localStorage.setItem('contacts', JSON.stringify(updatedContacts));
+      return updatedContacts;
     },
   },
 });
