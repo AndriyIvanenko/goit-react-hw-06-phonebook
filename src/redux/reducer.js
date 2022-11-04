@@ -18,6 +18,10 @@ const initialContacts = localStorage.getItem('contacts')
 const contactsReducer = (state = initialContacts, action) => {
   switch (action.type) {
     case 'contacts/addContact': {
+      if (state.find(contact => contact.name === action.payload.name)) {
+        alert(`${action.payload.name} is already in contacts`);
+        return;
+      }
       const updatedContacts = [...state, action.payload];
       localStorage.setItem('contacts', JSON.stringify(updatedContacts));
       return updatedContacts;
