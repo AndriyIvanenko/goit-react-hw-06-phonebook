@@ -3,16 +3,14 @@ import { getContacts, getFilter } from 'redux/selectors';
 import { Li } from './Contacts.styled';
 import { ContactsItem } from 'components/ContactsItem/ContactsItem';
 
-const filteredContacts = (contacts, filter) => {
-  return contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.value.toLowerCase())
-  );
+const filteredContacts = (contacts, filterValue) => {
+  return contacts.filter(contact => contact.name.toLowerCase().includes(filterValue.toLowerCase()));
 };
 
 export const Contacts = () => {
   const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
-  const filteredContactList = filteredContacts(contacts, filter);
+  const filterValue = useSelector(getFilter);
+  const filteredContactList = filteredContacts(contacts, filterValue);
 
   return (
     <ul>

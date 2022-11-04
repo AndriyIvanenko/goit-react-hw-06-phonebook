@@ -1,12 +1,12 @@
 import { FilterSection, Label, Input } from './Filter.styled';
 import { useDispatch } from 'react-redux';
-import { filterContacts } from 'redux/actions';
+import { setFilterValue } from 'redux/filterSlice';
 
 export const Filter = () => {
   const dispatch = useDispatch();
   const filterChangeHandler = evt => {
-    const value = evt.currentTarget.value;
-    dispatch(filterContacts(value));
+    const filterValue = evt.currentTarget.value;
+    dispatch(setFilterValue(filterValue));
   };
 
   return (
