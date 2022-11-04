@@ -16,12 +16,15 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   margin-bottom: 5px;
+  padding: 5px;
 `;
 
 export const Button = styled.button`
   width: 100px;
-  font-size: 12px;
+  font-size: 14px;
   margin-top: 20px;
+  padding: 5px;
+
   &:hover {
     cursor: pointer;
   }
